@@ -20,13 +20,17 @@ public class Application {
                 System.out.println("덧셈할 문자열을 입력해주세요");
 
                 inputText = Console.readLine();
+                if(inputText == ""){
+                    System.out.println("결과 : " + 0);
+                    continue;
+                }
                 if(inputText.contains("//") && inputText.contains("\\n")){
                     separator = takeSeparator(inputText);
                     textConfirm(inputText,separator);
                     inputText = inputText.split("\\\\n")[1];
                     regex += "|" + Pattern.quote(separator);
                 }
-                
+
                 for (String i : inputText.split(regex)) {
                     result = result.add(new BigDecimal(i));
                 }
