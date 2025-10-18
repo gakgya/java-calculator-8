@@ -11,7 +11,6 @@ public class Application {
         // TODO: 프로그램 구현
         boolean condition = true;
 
-        while (condition) {
             try {
                 String inputText = "";
                 String separator = null;
@@ -23,7 +22,6 @@ public class Application {
 
                 if (inputText.equals("")) {
                     System.out.println("결과 : 0");
-                    continue;
                 }
 
                 if (inputText.contains("//") && inputText.contains("\\n")) {
@@ -34,6 +32,9 @@ public class Application {
                 }
 
                 for (String i : inputText.split(regex)) {
+                    if(i.contains("-")){
+                        stopProgram("음수 사용불가!");
+                    }
                     result = result.add(new BigDecimal(i));
                 }
 
@@ -42,7 +43,6 @@ public class Application {
                 stopProgram(e.getMessage());
             }
         }
-    }
 
     private static String takeSeparator(String text) {
         int tempFront = text.indexOf("//") + 2;
